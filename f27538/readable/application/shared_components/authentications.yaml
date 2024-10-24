@@ -1,0 +1,63 @@
+---
+- # ====== Authentication: Oracle APEX Accounts ================
+  id: 38956526425127503887
+  identification: 
+    name: Oracle APEX Accounts
+
+  subscription: 
+    version-number: 15569935880077
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: custom ==============================
+  id: 38957699495330541934
+  identification: 
+    name: custom
+
+  subscription: 
+    version-number: 15570380829598
+
+  settings: 
+    type: Custom
+    authentication-function-name: custom_auth
+    enable-legacy-authentication-attributes: false
+
+  source: 
+    pl/sql-code: |
+      FUNCTION custom_auth (p_username IN varchar2, p_password IN varchar2)
+      RETURN Boolean
+      AS
+          my_user NUMBER := 0;
+          v_user_id NUMBER;
+      BEGIN
+          SELECT 1, user_id INTO my_user, v_user_id FROM USERS
+          WHERE username = :P9999_USERNAME
+          AND (password_hash) = (:P9999_PASSWORD);
+          APEX_UTIL.SET_SESSION_STATE('USER_ID', v_user_id);
+          RETURN TRUE;
+          
+      EXCEPTION
+          WHEN NO_DATA_FOUND THEN
+              RETURN FALSE;
+      END custom_auth;
+      
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+

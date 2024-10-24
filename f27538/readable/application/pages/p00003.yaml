@@ -1,0 +1,913 @@
+---
+# ====== Page: Create Task ===================================
+id: 3
+identification: 
+  name: Create Task
+  alias: CREATE-TASK
+  title: Create Task
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: TITLE =======================================
+  id: 34971377376836874646
+  identification: 
+    name: TITLE
+    title: EDIT TASK
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 38956526789819503887
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noUI
+    - t-Region--hiddenOverflow
+    - t-Form--labelsAbove
+    - margin-left-md
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: TaskEntryForm ===============================
+  id: 73941369670984478212
+  identification: 
+    name: TaskEntryForm
+    title: Task Entry Form
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TASKS
+    include-rowid-column: false
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: 4
+    new-column: true
+    column-span: 6
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+page-items: 
+- # ====== Page Item: P3_TASK_ID ===============================
+  id: 73941371575272478217
+  identification: 
+    name: P3_TASK_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: TaskEntryForm # 73941369670984478212
+    column: TASK_ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_TASK_TITLE ============================
+  id: 73941371720418478218
+  identification: 
+    name: P3_TASK_TITLE
+    type: Text Field
+
+  label: 
+    label: Task Title
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: TaskEntryForm # 73941369670984478212
+    column: TASK_TITLE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_TASK_DESCRIPTION ======================
+  id: 73941371794937478219
+  identification: 
+    name: P3_TASK_DESCRIPTION
+    type: Textarea
+
+  label: 
+    label: Task Description
+    alignment: Left
+
+  settings: 
+    resizable: true
+    auto-height: false
+    character-counter: false
+    trim-spaces: Leading and Trailing
+
+  layout: 
+    sequence: 30
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 10
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: TaskEntryForm # 73941369670984478212
+    column: TASK_DESCRIPTION
+    data-type: CLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: CLOB
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_DUE_DATE ==============================
+  id: 73941371921022478220
+  identification: 
+    name: P3_DUE_DATE
+    type: Date Picker
+
+  label: 
+    label: Due Date
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 50
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: TaskEntryForm # 73941369670984478212
+    column: DUE_DATE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_STATUS ================================
+  id: 73941371929726478221
+  identification: 
+    name: P3_STATUS
+    type: Select One
+
+  label: 
+    label: Status
+    alignment: Left
+
+  settings: 
+    fetch-on-search: false
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  layout: 
+    sequence: 70
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 20
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: STATUS # 38971007292266603613
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: TaskEntryForm # 73941369670984478212
+    column: STATUS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_PRIORITY ==============================
+  id: 73941372074106478222
+  identification: 
+    name: P3_PRIORITY
+    type: Select One
+
+  label: 
+    label: Priority
+    alignment: Left
+
+  settings: 
+    fetch-on-search: false
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  layout: 
+    sequence: 100
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: PRIORITY # 38971005412960603607
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: TaskEntryForm # 73941369670984478212
+    column: PRIORITY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_USER_ID ===============================
+  id: 73941372141782478223
+  identification: 
+    name: P3_USER_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 120
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: TaskEntryForm # 73941369670984478212
+    column: USER_ID
+    data-type: NUMBER
+    query-only: true
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: 26
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_CREATED_AT ============================
+  id: 73941372341726478225
+  identification: 
+    name: P3_CREATED_AT
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 130
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: TaskEntryForm # 73941369670984478212
+    column: CREATED_AT
+    data-type: TIMESTAMP
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_UPDATED_AT ============================
+  id: 73941372473491478226
+  identification: 
+    name: P3_UPDATED_AT
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 140
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: TaskEntryForm # 73941369670984478212
+    column: UPDATED_AT
+    data-type: TIMESTAMP
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: updateTask ==================================
+  id: 37735026036890267928
+  identification: 
+    button-name: updateTask
+    label: Update
+
+  layout: 
+    sequence: 160
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P3_TASK_ID
+
+- # ====== Button: createTask ==================================
+  id: 38969996144188603597
+  identification: 
+    button-name: createTask
+    label: Create
+
+  layout: 
+    sequence: 150
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P3_TASK_ID
+
+- # ====== Button: deleteTask ==================================
+  id: 63748104061939307105
+  identification: 
+    button-name: deleteTask
+    label: Delete Task
+
+  layout: 
+    sequence: 170
+    region: TaskEntryForm # 73941369670984478212
+    slot: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: false
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text with Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P3_TASK_ID
+
+- # ====== Button: AllTasks ====================================
+  id: 63748104312015307108
+  identification: 
+    button-name: AllTasks
+    label: Alltasks
+
+  layout: 
+    sequence: 10
+    region: TITLE # 34971377376836874646
+    slot: PREVIOUS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-angle-left
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:2:&SESSION.::&DEBUG.:::'
+      page: 2 # All Tasks
+
+    warn-on-unsaved-changes: Do Not Check
+
+processes: 
+- # ====== Process: insert form data ===========================
+  id: 37735025879491267926
+  identification: 
+    name: insert form data
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          v_task_id TASKS.TASK_ID%TYPE;  -- Variable to hold the task ID if it exists
+      BEGIN
+          -- Check if TASK_ID is provided (i.e., we are updating an existing task)
+          IF :P3_TASK_ID IS NULL THEN
+          
+              -- If no TASK_ID is provided, create a new task
+              INSERT INTO TASKS (TASK_TITLE, Task_Description, DUE_DATE, STATUS, PRIORITY, USER_ID)
+              VALUES (:P3_TASK_TITLE, :P3_Task_Description, :P3_DUE_DATE, :P3_STATUS, :P3_PRIORITY, APEX_UTIL.GET_SESSION_STATE('USER_ID'));
+              
+          END IF;
+          
+          -- Commit the transaction
+          COMMIT;
+      
+      EXCEPTION
+          WHEN OTHERS THEN
+              -- Rollback transaction if any error occurs
+              ROLLBACK;
+              
+              -- Display an error message to the user
+              APEX_ERROR.ADD_ERROR (
+                  p_message => 'Error occurred while processing task data: ' || SQLERRM,
+                  p_display_location => apex_error.c_inline_in_notification
+              );
+      END;
+      
+      
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: |
+      &P3_SUCCESS_MESSAGE.
+      
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: createTask # 38969996144188603597
+    type: Item is NULL
+    item: P3_TASK_ID
+
+- # ====== Process: Initialize form Add Task ===================
+  id: 38971002457914603603
+  identification: 
+    name: Initialize form Add Task
+    type: Form - Initialization
+    execution-chain: None
+    form-region: TaskEntryForm # 73941369670984478212
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: delete form data ===========================
+  id: 63748104148867307106
+  identification: 
+    name: delete form data
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          v_task_id TASKS.TASK_ID%TYPE;  -- Variable to hold the task ID if it exists
+      BEGIN
+          -- Check if an action is provided and the action is 'DELETE'
+          IF :P3_TASK_ID IS NOT NULL THEN
+              -- Try to delete the row with the given TASK_ID
+              DELETE FROM TASKS
+              WHERE TASK_ID = :P3_TASK_ID;
+              
+              -- Set success message for deletion
+              :P3_SUCCESS_MESSAGE := 'Successfully deleted task';
+              
+              -- Commit the transaction after deletion
+              COMMIT;
+          END IF;  -- Corrected this line (added space between END and IF)
+      END;
+      
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Successfully Deleted task
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: deleteTask # 63748104061939307105
+    type: Item is NOT NULL
+    item: P3_TASK_ID
+
+- # ====== Process: update form data ===========================
+  id: 63748104261819307107
+  identification: 
+    name: update form data
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          v_task_id TASKS.TASK_ID%TYPE;  -- Variable to hold the task ID if it exists
+      BEGIN
+          -- Check if TASK_ID is provided (i.e., we are updating an existing task)
+          IF :P3_TASK_ID IS NOT NULL THEN
+              -- Try to find an existing task with the given TASK_ID
+              SELECT TASK_ID INTO v_task_id
+              FROM TASKS
+              WHERE TASK_ID = :P3_TASK_ID;
+      
+              -- If the task exists, update it
+              UPDATE TASKS
+              SET TASK_TITLE = :P3_TASK_TITLE,
+                  Task_Description = :P3_Task_Description,
+                  DUE_DATE = :P3_DUE_DATE,
+                  STATUS = :P3_STATUS,
+                  PRIORITY = :P3_PRIORITY
+              WHERE TASK_ID = :P3_TASK_ID;
+              
+         
+          END IF;
+          
+          -- Commit the transaction
+          COMMIT;
+      
+      EXCEPTION
+          WHEN OTHERS THEN
+              -- Rollback transaction if any error occurs
+              ROLLBACK;
+              
+              -- Display an error message to the user
+              APEX_ERROR.ADD_ERROR (
+                  p_message => 'Error occurred while processing task data: ' || SQLERRM,
+                  p_display_location => apex_error.c_inline_in_notification
+              );
+      END;
+      
+      
+
+  execution: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Successfully Updated task
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: updateTask # 37735026036890267928
+    type: Item is NOT NULL
+    item: P3_TASK_ID
+
+branches: 
+- # ====== Branch: redirectToAllTasks ==========================
+  id: 37735025936528267927
+  identification: 
+    name: redirectToAllTasks
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:2:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 2 # All Tasks
+

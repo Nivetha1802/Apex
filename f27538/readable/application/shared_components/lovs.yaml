@@ -1,0 +1,67 @@
+---
+- # ====== List of Values: PRIORITY ============================
+  id: 38971005412960603607
+  identification: 
+    name: PRIORITY
+
+  subscription: 
+    version-number: 15569962434192
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: Low ==========================================
+    id: 38971005814271603608
+    entry: 
+      sequence: 1
+      display: Low
+      return: low
+
+  - # ====== Entry: Medium =======================================
+    id: 38971006280759603608
+    entry: 
+      sequence: 2
+      display: Medium
+      return: medium
+
+  - # ====== Entry: High =========================================
+    id: 38971006681490603608
+    entry: 
+      sequence: 3
+      display: High
+      return: high
+
+- # ====== List of Values: STATUS ==============================
+  id: 38971007292266603613
+  identification: 
+    name: STATUS
+
+  subscription: 
+    version-number: 15569962434216
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: Pending ======================================
+    id: 38971007671413603613
+    entry: 
+      sequence: 1
+      display: Pending
+      return: pending
+
+  - # ====== Entry: In-progress ==================================
+    id: 38971008037418603613
+    entry: 
+      sequence: 2
+      display: In-progress
+      return: in_progress
+
+  - # ====== Entry: Completed ====================================
+    id: 38971008403603603613
+    entry: 
+      sequence: 3
+      display: Completed
+      return: completed
+

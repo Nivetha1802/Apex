@@ -1,0 +1,21 @@
+---
+- # ====== Breadcrumb: Breadcrumb ==============================
+  id: 38956526789819503887
+  identification: 
+    name: Breadcrumb
+
+  entries: 
+  - # ====== Entry: All Tasks ====================================
+    id: 38969857760939588409
+    identification: 
+      name: All Tasks
+      page-number: 2
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # All Tasks
+

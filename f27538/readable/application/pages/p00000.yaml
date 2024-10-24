@@ -1,0 +1,123 @@
+---
+# ====== Page: Global Page ===================================
+id: 0
+identification: 
+  name: Global Page
+
+regions: 
+- # ====== Region: background ==================================
+  id: 34971376549698874638
+  identification: 
+    name: background
+    type: Static Content
+
+  source: 
+    html-code: |
+      <style>
+      #t_PageBody{
+          background:url(#APP_FILES#To-do-cute-sticker-Planner-reminder-tag-Graphics-73678348-1.png);
+          }
+      footer{
+      display:none!important
+      }
+      </style>
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_08
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noUI
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: true
+
+buttons: 
+- # ====== Button: Login =======================================
+  id: 37735026635879267934
+  identification: 
+    button-name: Login
+    label: Login
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BEFORE_NAVIGATION_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:9999::'
+      page: 9999 # Login Page
+      clear-cache: 9999
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: SignUp ======================================
+  id: 37735026751448267935
+  identification: 
+    button-name: SignUp
+    label: Sign up
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    slot: BEFORE_NAVIGATION_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:4:&SESSION.::&DEBUG.:4::'
+      page: 4 # Sign up Page
+      clear-cache: 4
+
+    warn-on-unsaved-changes: Do Not Check
+

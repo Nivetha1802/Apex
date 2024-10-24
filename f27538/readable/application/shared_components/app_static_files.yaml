@@ -1,0 +1,109 @@
+---
+- # ====== Static Application File: icons/app-icon-32.png ======
+  id: 38956817821400504096
+  identification: 
+    file-name: icons/app-icon-32.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-144-rounded.p
+  id: 38956818102453504097
+  identification: 
+    file-name: icons/app-icon-144-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-192.png =====
+  id: 38956818411824504097
+  identification: 
+    file-name: icons/app-icon-192.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-512.png =====
+  id: 38956818703371504097
+  identification: 
+    file-name: icons/app-icon-512.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-256-rounded.p
+  id: 38956819081841504098
+  identification: 
+    file-name: icons/app-icon-256-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/bg_apex.jpeg =========
+  id: 63609287046402018443
+  identification: 
+    file-name: icons/bg_apex.jpeg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/icons-2188729_640.webp
+  id: 63711168598819976909
+  identification: 
+    file-name: icons/icons-2188729_640.webp
+
+  attributes: 
+    mime-type: image/webp
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/images.png ===========
+  id: 63711629954690295693
+  identification: 
+    file-name: icons/images.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: getty_623425276_351576.jpg =
+  id: 63713379371112013979
+  identification: 
+    file-name: getty_623425276_351576.jpg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: 7590241.png ================
+  id: 63713392080697015499
+  identification: 
+    file-name: 7590241.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: 960x0.webp =================
+  id: 63715350274587016630
+  identification: 
+    file-name: 960x0.webp
+
+  attributes: 
+    mime-type: image/webp
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: To-do-cute-sticker-Planner-r
+  id: 63721665625906064915
+  identification: 
+    file-name: To-do-cute-sticker-Planner-reminder-tag-Graphics-73678348-1.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+

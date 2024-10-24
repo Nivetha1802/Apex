@@ -1,0 +1,304 @@
+---
+# ====== Page: All Tasks =====================================
+id: 2
+identification: 
+  name: All Tasks
+  alias: ALL-TASKS
+  title: All Tasks
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    #createTask {
+        padding: 25px;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: All Tasks ===================================
+  id: 63748103891634307103
+  identification: 
+    name: All Tasks
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 38956526789819503887
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noUI
+    - t-Region--hiddenOverflow
+    - t-Form--xlarge
+    - t-Form--labelsAbove
+    - margin-left-md
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: task ========================================
+  id: 76062280658753257624
+  identification: 
+    name: task
+    title: Task
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select T.TASK_ID,
+             T.TASK_TITLE,
+             T.TASK_DESCRIPTION,
+             T.DUE_DATE,
+             T.STATUS,
+             T.PRIORITY,
+             T.USER_ID,
+             T.CREATED_AT,
+             T.UPDATED_AT
+        from TASKS T JOIN USERS U ON U.USER_ID = t.USER_ID where t.user_id = APEX_UTIL.GET_SESSION_STATE('USER_ID');
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Navigation
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 38969855806095588407
+    appearance: 
+      layout: Float
+
+    card: 
+      primary-key-column-1: TASK_ID
+
+    title: 
+      advanced-formatting: false
+      column: TASK_TITLE
+
+    subtitle: 
+      advanced-formatting: false
+
+    body: 
+      advanced-formatting: false
+      column: TASK_DESCRIPTION
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: Initials
+      icon-column: PRIORITY
+      icon-position: Start
+      badge-column: STATUS
+      badge-label: '&STATUS.'
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: true
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+    actions: 
+    - # ====== Action: Full Card ===================================
+      id: 38969856314204588407
+      identification: 
+        type: Full Card
+
+      layout: 
+        sequence: 10
+
+      link: 
+        type: Redirect to Page in this Application
+        target: 
+          url: 'f?p=&APP_ID.:3:&SESSION.::&DEBUG.:3:P3_TASK_ID:&TASK_ID.'
+          page: 3 # Create Task
+          clear-cache: 3
+          values: 
+            p3_task_id: '&TASK_ID.'
+
+page-items: 
+- # ====== Page Item: P2_ORDER_BY ==============================
+  id: 76062285865915257656
+  identification: 
+    name: P2_ORDER_BY
+    type: Select List
+
+  label: 
+    label: Order By
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 20
+    region: task # 76062280658753257624
+    slot: ORDER_BY_ITEM
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC2:Task Title;TASK_TITLE,Due Date;DUE_DATE,Priority;PRIORITY'
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: TASK_TITLE
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: createtask ==================================
+  id: 63748103676728307101
+  identification: 
+    button-name: createtask
+    label: Create Task
+
+  layout: 
+    sequence: 40
+    region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: false
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text with Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-plus-square-o
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:3:&SESSION.::&DEBUG.:3::'
+      page: 3 # Create Task
+      clear-cache: 3
+
+    warn-on-unsaved-changes: Do Not Check
+
+  advanced: 
+    static-id: createTask
+

@@ -1,0 +1,14 @@
+---
+- # ====== Application Item: USER_ID ===========================
+  id: 39154177749337686957
+  identification: 
+    name: USER_ID
+    scope: Application
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 15570485022790
+
